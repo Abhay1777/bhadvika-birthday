@@ -116,6 +116,10 @@ body {
   background: rgba(13,4,22,0.6);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,110,180,.18);
+  transition: transform .3s ease-in-out, padding .3s, background .3s;
+}
+.top-nav.nav-hidden {
+  transform: translateY(-100%);
 }
 .nav-logo {
   font-family: var(--font-fancy); font-size: 1.3rem;
@@ -253,4 +257,8 @@ body {
   }
   .nav-link { font-size: .65rem; padding: .3rem .5rem; margin-bottom: .2rem; }
   .page-nav-row { flex-direction: column; align-items: center; }
+  
+  .page-wrapper {
+    padding-top: 110px; /* Accounts for taller mobile nav bar */
+  }
 }
