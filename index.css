@@ -208,7 +208,7 @@
 }
 .t-happy, .t-birthday {
   font-family: var(--font-title);
-  font-size: clamp(3.2rem, 10vw, 6.5rem);
+  font-size: clamp(2.4rem, 10vw, 6.5rem);
   background: linear-gradient(135deg, #fff8e1, var(--gold), var(--coral));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
@@ -216,7 +216,7 @@
 .t-birthday { animation: slideDown .8s ease .25s both; }
 .t-name {
   font-family: var(--font-fancy);
-  font-size: clamp(2.8rem, 9vw, 5.5rem);
+  font-size: clamp(2.2rem, 9vw, 5.5rem);
   background: linear-gradient(90deg, var(--pink), #d63031, var(--purple));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   animation: pulseGlow 2.2s ease infinite, fadeInUp .9s ease .5s both;

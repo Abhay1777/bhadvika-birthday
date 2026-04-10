@@ -29,16 +29,17 @@
   --glow-gold:  0 0 30px rgba(249,199,10,0.35),  0 0 80px rgba(249,199,10,0.12);
 }
 
-html { scroll-behavior: smooth; overflow-x: hidden; width: 100vw; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; position: relative; }
 
 body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--white);
   overflow-x: hidden;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 ::-webkit-scrollbar { width: 5px; }
@@ -238,8 +239,18 @@ body {
 
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width:600px) {
-  .top-nav { padding: .6rem 1rem; }
-  .nav-links { gap: .25rem; }
-  .nav-link { font-size: .7rem; padding: .3rem .65rem; }
+  .top-nav { 
+    padding: .6rem .5rem; 
+    flex-direction: column; 
+    gap: .5rem; 
+    text-align: center; 
+  }
+  .nav-logo { font-size: 1.15rem; }
+  .nav-links { 
+    gap: .25rem; 
+    justify-content: center; 
+    flex-wrap: wrap; /* CRITICAL for preventing mobile overflow */
+  }
+  .nav-link { font-size: .65rem; padding: .3rem .5rem; margin-bottom: .2rem; }
   .page-nav-row { flex-direction: column; align-items: center; }
 }
