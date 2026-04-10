@@ -195,3 +195,18 @@ window.addEventListener("resize", () => {
   const canvas = $("confettiCanvas");
   if (canvas) { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
 });
+
+
+/* -- NAV AUTO-HIDE ON SCROLL -- */
+let lastScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  const topNav = document.querySelector('.top-nav');
+  if (!topNav) return;
+  if (currentScrollY > lastScrollY && currentScrollY > 70) {
+    topNav.style.transform = 'translateY(-150%)';
+  } else if (currentScrollY < lastScrollY) {
+    topNav.style.transform = 'translateY(0%)';
+  }
+  lastScrollY = currentScrollY;
+}, { passive: true });
