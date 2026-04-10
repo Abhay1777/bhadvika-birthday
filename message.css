@@ -1,0 +1,116 @@
+/* message.css */
+
+.msg-page {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  padding: 3rem 1.5rem 2rem;
+  background:
+    radial-gradient(ellipse at 20% 30%, #3d0f6b 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, #6b0f3d 0%, transparent 50%),
+    var(--bg);
+  position: relative;
+}
+
+.msg-container {
+  width: 100%; max-width: 760px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 2rem;
+}
+
+/* ── ENVELOPE ────────────────────────────────────── */
+.envelope-wrap { perspective: 900px; margin: 3rem 0 1rem; }
+.envelope {
+  width: 240px; height: 160px; position: relative;
+  cursor: pointer; transform-style: preserve-3d;
+  transition: transform .4s;
+  filter: drop-shadow(0 8px 28px rgba(233,30,140,.45));
+}
+.envelope:hover { transform: scale(1.06) translateY(-4px); }
+.env-body {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--deep-pink), var(--purple));
+  border-radius: 14px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: .5rem;
+  border: 2px solid rgba(255,110,180,.5);
+}
+.env-icon { font-size: 3.5rem; animation: bounce 1.4s ease infinite; }
+.env-hint { font-size: .85rem; color: rgba(255,255,255,.75); letter-spacing: .5px; }
+.env-flap {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 50%; border-radius: 14px 14px 0 0;
+  background: linear-gradient(175deg, rgba(255,110,180,.5), rgba(155,89,182,.5));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+  z-index: 2;
+}
+.envelope.opened .env-flap { transform: rotateX(180deg); }
+
+/* ── MESSAGE CARD ────────────────────────────────── */
+.msg-card {
+  width: 100%; padding: 3rem 2.5rem;
+  position: relative;
+  display: none; /* shown via .visible */
+  animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
+}
+.msg-card.visible { display: block; }
+
+.card-sparkle {
+  position: absolute; font-size: 1.8rem;
+  animation: swing 3.5s ease-in-out infinite;
+}
+.s1 { top: 1rem;    left: 1.3rem;  animation-delay: 0s;   }
+.s2 { top: 1rem;    right: 1.3rem; animation-delay: .5s;  }
+.s3 { bottom: 1rem; left: 1.3rem;  animation-delay: 1s;   }
+.s4 { bottom: 1rem; right: 1.3rem; animation-delay: 1.5s; }
+
+/* Photo Reveal inside Message Card */
+.msg-photo-wrap {
+  width: 100%; max-width: 380px;
+  margin: 0 auto; height: 0; opacity: 0; overflow: hidden;
+  border-radius: 18px; transform: translateY(20px) scale(0.95);
+  transition: all 1s cubic-bezier(.34,1.56,.64,1);
+}
+.msg-photo-wrap.show-photo {
+  height: 260px; opacity: 1; transform: translateY(0) scale(1);
+  margin-top: 1rem; margin-bottom: 2rem;
+  box-shadow: 0 12px 35px rgba(233,30,140,.3);
+  border: 2px solid rgba(255,110,180,.6);
+}
+.msg-photo {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.typewriter-wrap {
+  min-height: 280px;
+  display: flex; align-items: flex-start; flex-wrap: wrap;
+}
+.typewriter-text {
+  font-family: var(--font-fancy);
+  font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+  line-height: 1.9; color: rgba(255,255,255,.92);
+  white-space: pre-wrap; text-align: center; width: 100%;
+}
+.blink-cursor {
+  font-size: 1.5rem; color: var(--pink);
+  animation: blink .65s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* Signature */
+.msg-signature { text-align: center; margin-top: 2.5rem; }
+.sig-line {
+  width: 120px; height: 2px; margin: 0 auto 1.2rem;
+  background: linear-gradient(90deg, transparent, var(--pink), transparent);
+}
+.sig-text { font-size: .95rem; color: rgba(255,255,255,.65); margin-bottom: .4rem; }
+.sig-name {
+  font-family: var(--font-fancy); font-size: 1.4rem;
+  color: var(--pink); filter: drop-shadow(0 0 8px var(--pink));
+}
+
+@media (max-width:600px) {
+  .msg-card { padding: 2rem 1.25rem; }
+}

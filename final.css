@@ -1,0 +1,126 @@
+/* final.css */
+
+.final-page {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; padding: 3rem 1.5rem 2rem;
+  background:
+    radial-gradient(ellipse at 30% 10%, #200d40 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 90%, #3d0416 0%, transparent 50%),
+    var(--bg);
+  position: relative; gap: 0;
+}
+
+/* ── QUALITIES ────────────────────────────────────── */
+.qualities-section {
+  width: 100%; max-width: 900px;
+  margin-bottom: 3.5rem;
+}
+.bubbles-wrap {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  justify-content: center;
+}
+.q-bubble {
+  font-size: .95rem; font-weight: 600;
+  padding: .68rem 1.55rem; border-radius: 50px;
+  background: linear-gradient(135deg, rgba(255,110,180,.18), rgba(155,89,182,.22));
+  border: 1px solid rgba(255,110,180,.38);
+  color: white; cursor: default;
+  transition: transform .25s, box-shadow .25s, background .25s;
+  animation: bubblePop .6s cubic-bezier(.34,1.56,.64,1) var(--d) both;
+}
+.q-bubble:hover {
+  transform: translateY(-6px) scale(1.09);
+  background: linear-gradient(135deg, rgba(255,110,180,.42), rgba(155,89,182,.48));
+  box-shadow: 0 8px 28px rgba(255,110,180,.38);
+}
+@keyframes bubblePop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── FINAL CARD ───────────────────────────────────── */
+.final-section { width: 100%; max-width: 720px; margin-bottom: 1rem; }
+.final-card {
+  padding: 3.5rem 3rem; text-align: center;
+  border-color: rgba(249,199,10,.3);
+  box-shadow: var(--glow-gold);
+}
+
+/* Big emojis */
+.big-emojis-row {
+  display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 2rem;
+}
+.be {
+  font-size: 2.8rem; display: inline-block;
+  animation: swing 2s ease-in-out infinite;
+}
+.be:nth-child(1){animation-delay:0s}
+.be:nth-child(2){animation-delay:.2s}
+.be:nth-child(3){animation-delay:.4s}
+.be:nth-child(4){animation-delay:.6s}
+.be:nth-child(5){animation-delay:.8s}
+
+.final-heading {
+  font-family: var(--font-fancy);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: var(--soft-gold);
+  margin-bottom: 2rem;
+}
+
+/* Wish list */
+.wish-list {
+  list-style: none; display: flex; flex-direction: column;
+  gap: .75rem; margin-bottom: 2.5rem;
+  max-width: 420px; margin-left: auto; margin-right: auto;
+  text-align: left;
+}
+.wish-item {
+  display: flex; align-items: center; gap: .85rem;
+  background: rgba(255,255,255,.05);
+  border-radius: 14px; padding: .65rem 1.2rem;
+  transition: transform .22s, background .22s;
+  cursor: default;
+}
+.wish-item:hover { transform: translateX(8px); background: rgba(255,110,180,.14); }
+.wish-item span { font-size: 1.5rem; flex-shrink: 0; }
+.wish-item p { font-size: 1rem; color: rgba(255,255,255,.85); }
+
+/* Quote */
+.final-quote {
+  font-family: var(--font-fancy);
+  font-size: clamp(1.05rem, 2.2vw, 1.22rem);
+  color: rgba(255,255,255,.62);
+  font-style: italic; line-height: 1.7;
+  margin: 0 auto 2rem;
+  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--pink);
+  text-align: left; max-width: 460px;
+}
+
+/* Signature */
+.final-signed {
+  font-size: 1rem; color: rgba(255,255,255,.72);
+  line-height: 1.9; margin-bottom: 2.5rem;
+}
+.sign-name {
+  font-family: var(--font-fancy); font-size: 1.45rem;
+  color: var(--pink); display: block; margin-top: .2rem;
+  filter: drop-shadow(0 0 8px var(--pink));
+}
+
+/* Celebrate button */
+.celebrate-btn {
+  font-family: var(--font-body); font-size: 1.05rem; font-weight: 700;
+  padding: .85rem 2.4rem; border: none; border-radius: 50px; cursor: pointer;
+  background: linear-gradient(135deg, var(--gold), var(--coral));
+  color: #1a0b2e; letter-spacing: .5px;
+  box-shadow: 0 6px 26px rgba(249,199,10,.4);
+  transition: transform .22s, box-shadow .22s;
+}
+.celebrate-btn:hover { transform: scale(1.07) translateY(-3px); box-shadow: 0 12px 38px rgba(249,199,10,.6); }
+.celebrate-btn:active { transform: scale(.97); }
+
+@media (max-width:600px) {
+  .final-card { padding: 2rem 1.25rem; }
+}

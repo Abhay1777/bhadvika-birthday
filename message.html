@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Message For Bhadvika 💌</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="message.css"/>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="cake-loader">💌</div>
+    <p class="loader-text">Opening my heart...</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="balloons" id="balloons"></div>
+  <div id="heartsOverlay"></div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-logo">🎀 Bhadvika's Day</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="message.html"  class="nav-link active">Message</a>
+      <a href="memories.html" class="nav-link">Memories</a>
+      <a href="cake.html"     class="nav-link">Wish 🎂</a>
+      <a href="final.html"    class="nav-link">Final Surprise</a>
+    </div>
+  </nav>
+
+  <main class="page-wrapper msg-page">
+    <div class="stars-bg"></div>
+
+    <div class="msg-container">
+
+      <!-- Envelope reveal -->
+      <div class="envelope-wrap animate-on-scroll" id="envelopeWrap">
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+          <div class="env-flap"></div>
+          <div class="env-body">
+            <span class="env-icon">💌</span>
+            <p class="env-hint">Tap to open</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message card (hidden until envelope opened) -->
+      <div class="msg-card glass-card" id="msgCard">
+        <div class="card-sparkle s1">✨</div>
+        <div class="card-sparkle s2">🌸</div>
+        <div class="card-sparkle s3">🌺</div>
+        <div class="card-sparkle s4">✨</div>
+
+        <h1 class="section-title">A Message From My Heart 💌</h1>
+
+        <div class="msg-photo-wrap" id="msgPhotoWrap">
+          <img src="together.jpg" alt="Us together" class="msg-photo"/>
+        </div>
+
+        <div class="typewriter-wrap">
+          <p class="typewriter-text" id="typewriterText"></p>
+          <span class="blink-cursor" id="cursor" style="display:none;">|</span>
+        </div>
+
+        <div class="msg-signature animate-on-scroll">
+          <div class="sig-line"></div>
+          <p class="sig-text">With all my love &amp; every heartbeat 💕</p>
+          <p class="sig-name">— Your Bestie Forever 🌟</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Page navigation -->
+    <div class="page-nav-row animate-on-scroll">
+      <a href="index.html"    class="page-nav-btn prev">← Home</a>
+      <a href="memories.html" class="page-nav-btn next">Our Memories 🫂 →</a>
+    </div>
+  </main>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+
+  <script src="shared.js"></script>
+  <script>
+    const MESSAGE =
+      "Dear Bhadvika,\n\n" +
+      "I want you to know — you are one of the most genuine, warm, and beautiful souls I have ever had the privilege of knowing. " +
+      "The way you show up for the people you love is something truly rare in this world. 💫\n\n" +
+      "Having you in my life has changed me for the better in ways I can't even fully put into words. " +
+      "You make everything — even the ordinary Tuesday afternoons — feel like something worth remembering.\n\n" +
+      "Today, on your birthday, I want you to feel every ounce of love that you give to everyone else, " +
+      "come rushing right back to you — multiplied a thousand times. 🌊💖\n\n" +
+      "You deserve the absolute world, Bhadvika. And I'll always be here, cheering you on. " +
+      "Happy Birthday, my forever bestie! 🎂✨🎉";
+
+    let envelopeOpened = false;
+    function openEnvelope() {
+      if (envelopeOpened) return;
+      envelopeOpened = true;
+      const env = document.getElementById("envelope");
+      const card = document.getElementById("msgCard");
+      env.classList.add("opened");
+      spawnHearts(16);
+      setTimeout(() => {
+        document.getElementById("envelopeWrap").style.display = "none";
+        card.classList.add("visible");
+        launchConfetti(4500);
+        
+        // Show photo first, wait, then start typing
+        setTimeout(() => {
+          document.getElementById("msgPhotoWrap").classList.add("show-photo");
+          setTimeout(() => {
+            document.getElementById("cursor").style.display = "inline-block";
+            startTypewriter();
+          }, 1500); // text starts 1.5s after photo appears
+        }, 600); // photo starts appearing after card opens
+      }, 900);
+    }
+
+    function startTypewriter() {
+      const el = document.getElementById("typewriterText");
+      const cur = document.getElementById("cursor");
+      let i = 0;
+      function type() {
+        if (i < MESSAGE.length) {
+          const ch = MESSAGE[i++];
+          if (ch === "\n") el.innerHTML += "<br>";
+          else el.textContent += ch;
+          setTimeout(type, ch === "\n" ? 400 : 28);
+        } else {
+          cur.style.display = "none";
+          spawnHearts(12);
+        }
+      }
+      type();
+    }
+
+    function onPageReady() {
+      spawnHearts(10);
+    }
+    initScrollObserver();
+  </script>
+</body>
+</html>

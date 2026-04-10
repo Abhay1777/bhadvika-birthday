@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Make a Wish, Bhadvika! 🎂</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="cake.css"/>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="cake-loader">🕯️</div>
+    <p class="loader-text">Lighting the candles...</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="balloons" id="balloons"></div>
+  <div id="heartsOverlay"></div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-logo">🎀 Bhadvika's Day</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="message.html"  class="nav-link">Message</a>
+      <a href="memories.html" class="nav-link">Memories</a>
+      <a href="cake.html"     class="nav-link active">Wish 🎂</a>
+      <a href="final.html"    class="nav-link">Final Surprise</a>
+    </div>
+  </nav>
+
+  <main class="page-wrapper cake-page">
+    <div class="stars-bg"></div>
+
+    <h1 class="section-title animate-on-scroll">Make a Wish, Bhadvika! 🕯️</h1>
+    <p class="cake-subtitle animate-on-scroll">Blow out the candles one by one — close your eyes and wish big! ✨</p>
+
+    <div class="cake-scene animate-on-scroll">
+
+      <!-- Candles -->
+      <div class="candles-row" id="candlesRow">
+        <div class="candle" id="c1" onclick="blowCandle(1)" title="Blow!">
+          <div class="flame" id="f1"><div class="flame-inner"></div></div>
+          <div class="candle-body col1"></div>
+          <div class="wax-drip d1"></div>
+        </div>
+        <div class="candle" id="c2" onclick="blowCandle(2)" title="Blow!">
+          <div class="flame" id="f2"><div class="flame-inner"></div></div>
+          <div class="candle-body col2"></div>
+          <div class="wax-drip d2"></div>
+        </div>
+        <div class="candle" id="c3" onclick="blowCandle(3)" title="Blow!">
+          <div class="flame" id="f3"><div class="flame-inner"></div></div>
+          <div class="candle-body col3"></div>
+          <div class="wax-drip d3"></div>
+        </div>
+        <div class="candle" id="c4" onclick="blowCandle(4)" title="Blow!">
+          <div class="flame" id="f4"><div class="flame-inner"></div></div>
+          <div class="candle-body col4"></div>
+          <div class="wax-drip d4"></div>
+        </div>
+        <div class="candle" id="c5" onclick="blowCandle(5)" title="Blow!">
+          <div class="flame" id="f5"><div class="flame-inner"></div></div>
+          <div class="candle-body col5"></div>
+          <div class="wax-drip d5"></div>
+        </div>
+      </div>
+
+      <!-- Cake tiers -->
+      <div class="tier tier1">
+        <div class="frosting-top"></div>
+        <div class="tier-body">
+          <div class="deco-dots"></div>
+        </div>
+      </div>
+      <div class="tier tier2">
+        <div class="frosting-top"></div>
+        <div class="tier-body"></div>
+      </div>
+      <div class="tier tier3">
+        <div class="frosting-top"></div>
+        <div class="tier-body"></div>
+      </div>
+      <div class="cake-plate"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="candle-progress animate-on-scroll">
+      <span class="progress-label" id="progressLabel">5 candles burning 🔥</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Wish reveal -->
+    <div class="wish-reveal glass-card" id="wishReveal">
+      <div class="wish-firework">🎆</div>
+      <h2 class="wish-title" id="wishTitle"></h2>
+      <p class="wish-body" id="wishBody"></p>
+      <a href="final.html" class="page-nav-btn next" style="margin-top:1.5rem;display:inline-flex">
+        See Your Final Surprise 🌟 →
+      </a>
+    </div>
+
+    <div class="page-nav-row animate-on-scroll" id="bottomNav">
+      <a href="memories.html" class="page-nav-btn prev">← Memories</a>
+      <a href="final.html"    class="page-nav-btn next">Final Surprise 🌟 →</a>
+    </div>
+  </main>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+
+  <script src="shared.js"></script>
+  <script>
+    const TOTAL = 5;
+    let blown = 0;
+    const WISHES = [
+      "Your wish just shot straight to the stars, Bhadvika! 🌠 May every beautiful dream you carry in your heart come true — this year and every year after.",
+      "The universe heard you, Bhadvika! 🌌 May your wish bloom into the most wonderful reality. You deserve every bit of magic that comes your way! ✨💖",
+      "A wish as pure as yours is bound to come true! 🎇 Happy Birthday, superstar — may this year be your most glorious chapter yet. 🎂🌟",
+    ];
+
+    function blowCandle(id) {
+      const flame = document.getElementById(`f${id}`);
+      if (flame.classList.contains("out")) return;
+      flame.classList.add("out");
+      blown++;
+      playPop();
+      spawnHearts(4);
+
+      const pct = (blown / TOTAL) * 100;
+      document.getElementById("progressFill").style.width = pct + "%";
+      const rem = TOTAL - blown;
+      document.getElementById("progressLabel").textContent =
+        rem > 0 ? `${rem} candle${rem > 1 ? "s" : ""} still burning… 🔥` : "All candles blown! 🎉";
+
+      if (blown === TOTAL) {
+        setTimeout(showWish, 700);
+        launchConfetti(10000);
+      }
+    }
+
+    function showWish() {
+      const r = document.getElementById("wishReveal");
+      const wish = WISHES[Math.floor(Math.random() * WISHES.length)];
+      document.getElementById("wishTitle").textContent = "Your Wish Is On Its Way! ✨";
+      document.getElementById("wishBody").textContent  = wish;
+      r.classList.add("visible");
+      spawnHearts(30);
+      document.getElementById("bottomNav").style.display = "none";
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => launchConfetti(3000, true, rand(120, window.innerWidth - 120), rand(80, window.innerHeight / 2)), i * 400);
+      }
+    }
+
+    function onPageReady() { spawnHearts(10); }
+    initScrollObserver();
+  </script>
+</body>
+</html>

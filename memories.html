@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Memories 🫂 — Bhadvika</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="memories.css"/>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="cake-loader">🫂</div>
+    <p class="loader-text">Reliving the memories...</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="balloons" id="balloons"></div>
+  <div id="heartsOverlay"></div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-logo">🎀 Bhadvika's Day</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="message.html"  class="nav-link">Message</a>
+      <a href="memories.html" class="nav-link active">Memories</a>
+      <a href="cake.html"     class="nav-link">Wish 🎂</a>
+      <a href="final.html"    class="nav-link">Final Surprise</a>
+    </div>
+  </nav>
+
+  <main class="page-wrapper mem-page">
+    <div class="stars-bg"></div>
+
+    <h1 class="section-title animate-on-scroll">Our Beautiful Journey 🫂</h1>
+    <p class="mem-subtitle animate-on-scroll">Click each card to flip it and read our story 💕</p>
+
+    <div class="mem-grid">
+
+      <!-- Card 1: The Day We Met -->
+      <div class="mem-card animate-on-scroll" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-bg-glow g1"></div>
+            <span class="mem-emoji">📚</span>
+            <h3 class="card-title">The Day We Met</h3>
+            <p class="card-front-sub">Where it all began...</p>
+            <span class="flip-hint">Tap to reveal ✨</span>
+          </div>
+          <div class="card-back b1">
+            <span class="back-emoji">🌟</span>
+            <p class="back-text">
+              Exam season — you sitting right in front of me, me nervously behind you.
+              We started talking about preparation, syllabus, stress… and somewhere in between
+              all that panic, a friendship was born that I never want to lose. 📖💛
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Endless Laughter -->
+      <div class="mem-card animate-on-scroll" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-bg-glow g2"></div>
+            <span class="mem-emoji">😂</span>
+            <h3 class="card-title">Endless Laughter</h3>
+            <p class="card-front-sub">We laugh for the best reasons...</p>
+            <span class="flip-hint">Tap to reveal ✨</span>
+          </div>
+          <div class="card-back b2">
+            <span class="back-emoji">🤣</span>
+            <p class="back-text">
+              Bitching about Pratish and Shravni together — honestly a core part of our
+              friendship that built us! 😂 But what really sealed it was realising our vibes
+              match on another level. We just GET each other, no explanation needed. 💫
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Always There -->
+      <div class="mem-card animate-on-scroll" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-bg-glow g3"></div>
+            <span class="mem-emoji">🤗</span>
+            <h3 class="card-title">Always There</h3>
+            <p class="card-front-sub">My comfort person...</p>
+            <span class="flip-hint">Tap to reveal ✨</span>
+          </div>
+          <div class="card-back b3">
+            <span class="back-emoji">💙</span>
+            <p class="back-text">
+              When the world gets heavy and I fall apart, you've always been there —
+              right alongside Rudra — to hold me together. You never let me feel alone,
+              and that's something I'll treasure about you forever, Bhadvika. 🫂💕
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Celebrating YOU -->
+      <div class="mem-card animate-on-scroll" onclick="flipCard(this)">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-bg-glow g4"></div>
+            <span class="mem-emoji">🎉</span>
+            <h3 class="card-title">Celebrating YOU</h3>
+            <p class="card-front-sub">Today is your day!</p>
+            <span class="flip-hint">Tap to reveal ✨</span>
+          </div>
+          <div class="card-back b4">
+            <span class="back-emoji">🥂</span>
+            <p class="back-text">
+              Today we celebrate <em>you</em> — every year I get to be beside you on your
+              birthday is the most precious gift to me. You deserve the loudest party,
+              the most beautiful day, and all the love in the universe. Happy Birthday! 🎂🌟💖
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-nav-row animate-on-scroll">
+      <a href="message.html" class="page-nav-btn prev">← Message</a>
+      <a href="cake.html"    class="page-nav-btn next">Make a Wish 🎂 →</a>
+    </div>
+  </main>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+
+  <script src="shared.js"></script>
+  <script>
+    function flipCard(card) {
+      card.classList.toggle("flipped");
+      spawnHearts(5);
+      playPop();
+    }
+    function onPageReady() {
+      spawnHearts(12);
+    }
+    initScrollObserver();
+  </script>
+</body>
+</html>

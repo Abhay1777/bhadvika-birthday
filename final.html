@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Final Surprise for Bhadvika 🌟</title>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="final.css"/>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="cake-loader">🌟</div>
+    <p class="loader-text">Almost there...</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="balloons" id="balloons"></div>
+  <div id="heartsOverlay"></div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-logo">🎀 Bhadvika's Day</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="message.html"  class="nav-link">Message</a>
+      <a href="memories.html" class="nav-link">Memories</a>
+      <a href="cake.html"     class="nav-link">Wish 🎂</a>
+      <a href="final.html"    class="nav-link active">Final Surprise</a>
+    </div>
+  </nav>
+
+  <main class="page-wrapper final-page">
+    <div class="stars-bg"></div>
+
+    <!-- Qualities section -->
+    <section class="qualities-section">
+      <h1 class="section-title animate-on-scroll">Why You're Absolutely Incredible 🦋</h1>
+
+      <div class="bubbles-wrap">
+        <div class="q-bubble animate-on-scroll" style="--d:.0s">💖 Incredibly Kind</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.12s">🔥 Fiercely Strong</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.24s">😂 Effortlessly Funny</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.36s">🧠 Smart Beyond Measure</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.48s">✨ Naturally Charming</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.60s">🎨 Wildly Creative</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.72s">🌈 Pure Positivity</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.84s">🫂 My Safe Place</div>
+        <div class="q-bubble animate-on-scroll" style="--d:.96s">💫 My Best Friend Forever</div>
+      </div>
+    </section>
+
+    <!-- Final wish card -->
+    <section class="final-section animate-on-scroll">
+      <div class="final-card glass-card">
+
+        <div class="big-emojis-row">
+          <span class="be">🎂</span>
+          <span class="be">🎈</span>
+          <span class="be">🥳</span>
+          <span class="be">🎊</span>
+          <span class="be">💖</span>
+        </div>
+
+        <h2 class="final-heading">This Year, May You Have…</h2>
+
+        <ul class="wish-list">
+          <li class="wish-item"><span>🌟</span><p>Unlimited happiness that never fades</p></li>
+          <li class="wish-item"><span>💰</span><p>Blessings that overflow every day</p></li>
+          <li class="wish-item"><span>❤️</span><p>Love surrounding you from every corner</p></li>
+          <li class="wish-item"><span>🚀</span><p>Every dream you've ever whispered come true</p></li>
+          <li class="wish-item"><span>😂</span><p>Laughter so loud it echoes through the universe</p></li>
+          <li class="wish-item"><span>📚</span><p>Success in every exam and every chapter of life</p></li>
+        </ul>
+
+        <blockquote class="final-quote">
+          "A friend like you doesn't come twice — you are the rare kind that makes the whole world brighter just by being in it."
+        </blockquote>
+
+        <div class="final-signed">
+          With every bit of love I have,<br>
+          <strong class="sign-name">Your Bestie — Always & Forever 💕</strong>
+        </div>
+
+        <button class="celebrate-btn" onclick="bigCelebrate()" id="celebrateBtn">
+          🎊 &nbsp;Celebrate Again!
+        </button>
+
+      </div>
+    </section>
+
+    <div class="page-nav-row animate-on-scroll">
+      <a href="cake.html"   class="page-nav-btn prev">← Make a Wish</a>
+      <a href="index.html"  class="page-nav-btn next">🏠 Start Again</a>
+    </div>
+  </main>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+
+  <script src="shared.js"></script>
+  <script>
+    function bigCelebrate() {
+      launchConfetti(9000);
+      spawnHearts(40);
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          launchConfetti(3500, true, rand(80, window.innerWidth - 80), rand(60, window.innerHeight / 2));
+        }, i * 350);
+      }
+    }
+
+    function onPageReady() {
+      launchConfetti(7000);
+      spawnHearts(25);
+    }
+    initScrollObserver();
+  </script>
+</body>
+</html>

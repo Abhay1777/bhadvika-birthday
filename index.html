@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Bhadvika! 🎂</title>
+  <meta name="description" content="A magical birthday surprise for the most amazing bestie — Happy Birthday Bhadvika!"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="cake-loader">🎂</div>
+    <p class="loader-text">Preparing your surprise...</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <div class="balloons" id="balloons"></div>
+  <div id="heartsOverlay"></div>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-logo">🎀 Bhadvika's Day</a>
+    <div class="nav-links">
+      <a href="index.html"     class="nav-link active">Home</a>
+      <a href="message.html"   class="nav-link">Message</a>
+      <a href="memories.html"  class="nav-link">Memories</a>
+      <a href="cake.html"      class="nav-link">Wish 🎂</a>
+      <a href="final.html"     class="nav-link">Final Surprise</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero page-wrapper">
+    <div class="stars-bg"></div>
+
+    <div class="hero-layout">
+
+      <!-- Photo frame -->
+      <div class="photo-frame-wrap animate-on-scroll">
+        <div class="photo-ring">
+          <div class="photo-ring-inner">
+            <img src="bhadvika.jpg" alt="Bhadvika" class="bhadvika-photo"/>
+          </div>
+        </div>
+        <div class="photo-sparkles">
+          <span class="ps ps1">✨</span>
+          <span class="ps ps2">💖</span>
+          <span class="ps ps3">⭐</span>
+          <span class="ps ps4">🌸</span>
+          <span class="ps ps5">💫</span>
+        </div>
+        <div class="photo-caption">🎂 Queen of the Day 👑</div>
+      </div>
+
+    <div class="hero-content">
+      <div class="crown">👑</div>
+
+      <h1 class="main-title">
+        <span class="t-happy">Happy</span>
+        <span class="t-birthday">Birthday</span>
+        <span class="t-name">Bhadvika!</span>
+      </h1>
+
+      <p class="hero-sub">Today is entirely yours — you absolute queen of my life 🌟</p>
+
+      <div class="hearts-row">
+        <span>💖</span><span>💕</span><span>💗</span><span>💞</span><span>💓</span>
+      </div>
+
+      <div class="btn-group">
+        <button class="cta-primary" onclick="openSurprise()">
+          🎁 &nbsp;Your Surprise!
+        </button>
+        <a href="message.html" class="cta-secondary">
+          Read My Message 💌
+        </a>
+      </div>
+
+      <div class="page-dots">
+        <span class="dot active"></span>
+        <span class="dot" onclick="location.href='message.html'"></span>
+        <span class="dot" onclick="location.href='memories.html'"></span>
+        <span class="dot" onclick="location.href='cake.html'"></span>
+        <span class="dot" onclick="location.href='final.html'"></span>
+      </div>
+    </div>
+    </div><!-- end hero-layout -->
+
+    <div class="scroll-hint">Scroll down or click the dots to explore ↓</div>
+  </section>
+
+  <!-- PHOTO SHOWCASE SECTION -->
+  <section class="photo-section">
+    <div class="stars-bg"></div>
+    <div class="photo-showcase glass-card">
+      <div class="showcase-left">
+        <div class="showcase-frame">
+          <div class="showcase-ring">
+            <img src="bhadvika.jpg" alt="Bhadvika" class="showcase-photo"/>
+          </div>
+          <div class="showcase-badge">🥳 Birthday Girl!</div>
+        </div>
+      </div>
+      <div class="showcase-right">
+        <h2 class="showcase-title">The Star of Today ✨</h2>
+        <p class="showcase-quote">
+          "Look at this absolute ray of sunshine — with her sunglasses,
+          her vibe 😎, and that smile that makes every room brighter!
+          This is the girl who made even exam stress fun. Couldn't be
+          more proud to call you my best friend. 💕"
+        </p>
+        <div class="showcase-tags">
+          <span>😎 Iconic</span>
+          <span>💅 Unbothered</span>
+          <span>🌟 Glowing</span>
+          <span>👑 The Queen</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURPRISE MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="surprise-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-emoji">🎁</div>
+      <h2 class="modal-title">Hey Bhadvika!</h2>
+      <p class="modal-body">
+        Of all the people fate could have placed in front of me during those nerve-wracking exam days,
+        it chose you — and for that I'll be forever grateful to the universe. 🌌<br><br>
+        You make every ordinary day feel like a celebration. You are the kind of person
+        songs are written about, stories are told about, and hearts are full because of.<br><br>
+        This little website is my way of screaming to the world — <strong>she deserves every beautiful thing today and always!</strong> 💕
+      </p>
+      <div class="modal-footer">Happy Birthday, my dearest bestie! 🎂✨💖</div>
+    </div>
+  </div>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Birthday Music">🎵</button>
+
+  <script src="shared.js"></script>
+  <script>
+    function openSurprise() {
+      document.getElementById("modalOverlay").classList.add("open");
+      launchConfetti(6000);
+      spawnHearts(28);
+    }
+    function closeModal() {
+      document.getElementById("modalOverlay").classList.remove("open");
+    }
+    function onPageReady() {
+      launchConfetti(5000);
+      spawnHearts(20);
+    }
+    initScrollObserver();
+  </script>
+</body>
+</html>
