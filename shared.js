@@ -15,6 +15,25 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 1900);
 });
 
+// Intercept clicks on links to show the loader before navigating
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a");
+  if (link && !link.target && !link.hasAttribute("download") && link.href && link.origin === window.location.origin) {
+    if (!link.href.includes("#") && link.href !== window.location.href) {
+      e.preventDefault();
+      const loader = $("loader");
+      if (loader) {
+        loader.classList.remove("hidden");
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 1100); // Wait 1.1s to show the transition before actually changing the page
+      } else {
+        window.location.href = link.href;
+      }
+    }
+  }
+});
+
 /* ── STAR DOTS ───────────────────────────────────── */
 function createStars() {
   const c = document.querySelector(".stars-bg");
