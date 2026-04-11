@@ -156,7 +156,7 @@ function initScrollObserver() {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.02 });
   document.querySelectorAll(".animate-on-scroll").forEach(el => {
     el.style.opacity = "0"; obs.observe(el);
   });

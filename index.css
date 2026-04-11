@@ -191,8 +191,8 @@
   .hero-layout    { 
     flex-direction: column; 
     gap: 1.5rem; 
-    margin-top: auto; 
-    margin-bottom: auto; 
+    margin-top: 0; 
+    margin-bottom: 2rem; 
   }
   .hero-content   { text-align: center; }
   .photo-ring     { width: 180px; height: 180px; }
