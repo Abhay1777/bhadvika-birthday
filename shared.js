@@ -15,6 +15,13 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 1900);
 });
 
+// Auto-start music on first interaction (required by browsers)
+document.addEventListener("click", () => {
+  if (!audioCtx) {
+    toggleMusic();
+  }
+}, { once: true });
+
 // Intercept clicks on links to show the loader before navigating
 document.addEventListener("click", (e) => {
   const link = e.target.closest("a");
