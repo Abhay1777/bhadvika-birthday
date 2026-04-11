@@ -57,7 +57,7 @@
   animation: spinRing 3.5s linear infinite reverse; /* counter-rotate to keep photo upright */
 }
 
-.bhadvika-photo {
+.vedika-photo {
   width: 100%; height: 100%;
   object-fit: cover;
   border-radius: 50%;
