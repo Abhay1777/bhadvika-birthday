@@ -142,8 +142,10 @@ body {
 
 /* ── PAGE TRANSITION WRAPPER ─────────────────────── */
 .page-wrapper {
-  padding-top: 56px; /* nav height */
+  padding-top: 80px; /* Base nav height for desktop */
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── MUSIC BTN ───────────────────────────────────── */
@@ -259,6 +261,6 @@ body {
   .page-nav-row { flex-direction: column; align-items: center; }
   
   .page-wrapper {
-    padding-top: 110px; /* Accounts for taller mobile nav bar */
+    padding-top: 130px; /* Accounts for taller mobile nav bar */
   }
 }

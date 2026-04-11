@@ -3,7 +3,10 @@
 .final-page {
   min-height: 100vh;
   display: flex; flex-direction: column;
-  align-items: center; padding: 3rem 1.5rem 2rem;
+  align-items: center;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
   background:
     radial-gradient(ellipse at 30% 10%, #200d40 0%, transparent 50%),
     radial-gradient(ellipse at 70% 90%, #3d0416 0%, transparent 50%),

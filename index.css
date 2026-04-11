@@ -184,7 +184,16 @@
 
 /* Responsive */
 @media (max-width: 750px) {
-  .hero-layout    { flex-direction: column; gap: 2rem; }
+  .hero {
+    padding-top: 130px; /* Room for nav */
+    justify-content: flex-start; /* Prevent top overflow */
+  }
+  .hero-layout    { 
+    flex-direction: column; 
+    gap: 1.5rem; 
+    margin-top: auto; 
+    margin-bottom: auto; 
+  }
   .hero-content   { text-align: center; }
   .photo-ring     { width: 180px; height: 180px; }
   .ps             { transform-origin: 90px 90px; }

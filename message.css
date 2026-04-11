@@ -3,8 +3,9 @@
 .msg-page {
   min-height: 100vh;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-start;
-  padding: 3rem 1.5rem 2rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
   background:
     radial-gradient(ellipse at 20% 30%, #3d0f6b 0%, transparent 50%),
     radial-gradient(ellipse at 80% 70%, #6b0f3d 0%, transparent 50%),
